@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, Image, Button } from 'react-native';
+import CarrinhoContext from '../context/CarrinhoContext';
 
-export default function Detalhes({ route }) {
+const Detalhes = ({ route, navigation }) => {
+  const { adicionarAoCarrinho, carrinho } = useContext(CarrinhoContext);
   const { tenis } = route.params;
-  const [carrinho, setCarrinho] = useState([]);
 
   const addCarrinho = () => {
-    const novoCarrinho = [...carrinho, tenis];
-    setCarrinho(novoCarrinho);
-    alert('Volte para Home e Entre no Carrinho de compras!')
+    adicionarAoCarrinho(tenis);
+    console.log("Item adicionado ao carrinho:", tenis);
+    console.log("Carrinho atual:", carrinho);
+    navigation.navigate('Carrinho'); // Navegue para o carrinho após adicionar o item
   }
 
   return (
@@ -18,7 +20,7 @@ export default function Detalhes({ route }) {
         <Text style={styles.name}>{tenis.name}</Text>
         <Text style={styles.price}>{tenis.price}</Text>
         <Text style={styles.description}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra suscipit est, nec facilisis arcu tempor nec. Integer luctus, nisl non pellentesque fermentum, lorem lorem accumsan odio, a varius nulla est nec dui.
+          Descrição do produto...
         </Text>
         <Button title="Adicionar ao Carrinho" onPress={addCarrinho} />
       </View>
@@ -56,3 +58,5 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
+
+export default Detalhes;

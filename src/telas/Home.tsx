@@ -1,7 +1,9 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native';
-
+// HomeScreen.js
+import React, { useContext } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native'; 
+import CarrinhoContext from '../context/CarrinhoContext';
 const HomeScreen = ({ navigation }) => {
+  const {adicionarAoCarrinho} = useContext(CarrinhoContext);
   const Estoque = [
     { id: '1', name: 'Nike Air Force Preto', price: '$100', image: require('../../assets/forcepreto.png') },
     { id: '2', name: 'Nike Vomero 17', price: '$150', image: require('../../assets/vomero.png')},

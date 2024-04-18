@@ -1,8 +1,12 @@
-import React from 'react';
+// Carrinho.js
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, Button } from 'react-native';
+import CarrinhoContext from '../context/CarrinhoContext';
 
-const Carrinho = ({ carrinho }) => {
-  // Função para renderizar cada item do carrinho
+const Carrinho = ({ route }) => {
+  const {adicionarAoCarrinho} = useContext(CarrinhoContext);
+  const { carrinho } = route.params || { carrinho: [] };
+
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
       <Image source={item.image} style={styles.itemImage} />
@@ -22,7 +26,7 @@ const Carrinho = ({ carrinho }) => {
         keyExtractor={item => item.id}
         contentContainerStyle={styles.listContainer}
       />
-      <Button title="Finalizar Compra" onPress={() => console.log("Compra finalizada")} />
+      <Button title="Finalizar Compra" onPress={() => alert('Compra Finalizada!')} />
     </View>
   );
 };

@@ -7,21 +7,23 @@ import Detalhes from './src/telas/Detalhes';
 import Carrinho from './src/telas/Carrinho';
 import Login from './src/telas/Login';
 import Descricao from './src/telas/Descricao';
-
+import {CarrinhoProvider} from './src/context/CarrinhoContext';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator >
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Detalhes' component={Detalhes}/>
-        <Stack.Screen name='Carrinho' component={Carrinho} />
-        <Stack.Screen name='Login' component={Login}/>
-        <Stack.Screen name='Descricao' component={Descricao}/>
-        
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <CarrinhoProvider>
+          <Stack.Navigator>
+            <Stack.Screen name='Home' component={Home} />
+            <Stack.Screen name='Detalhes' component={Detalhes}/>
+            <Stack.Screen name='Carrinho' component={Carrinho} />
+            <Stack.Screen name='Login' component={Login}/>
+            <Stack.Screen name='Descricao' component={Descricao}/>  
+          </Stack.Navigator>
+        </CarrinhoProvider>
+      </NavigationContainer>
+
   );
 }
