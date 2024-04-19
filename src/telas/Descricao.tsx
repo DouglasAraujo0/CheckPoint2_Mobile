@@ -4,16 +4,9 @@ import { View, Text, StyleSheet} from "react-native"
 export default function Descricao() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Descrição dos Membros da Equipe</Text>
+      <Text style={styles.title}>CHECKPOINT 2 - MOBILE</Text>
       <View style={styles.memberContainer}>
-        <Text style={styles.memberName}>Nome do Membro 1</Text>
-        <Text style={styles.memberRole}>Função: Desenvolvedor Front-end</Text>
-        <Text style={styles.memberInfo}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend turpis at mi blandit, sed tempor metus finibus. Ut rutrum aliquet ex sit amet lacinia.</Text>
-      </View>
-      <View style={styles.memberContainer}>
-        <Text style={styles.memberName}>Nome do Membro 2</Text>
-        <Text style={styles.memberRole}>Função: Desenvolvedor Back-end</Text>
-        <Text style={styles.memberInfo}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend turpis at mi blandit, sed tempor metus finibus. Ut rutrum aliquet ex sit amet lacinia.</Text>
+        <Text style={styles.memberName}>Realizado por Douglas Magalhães de Araújo - RM 552008</Text>
       </View>
     </View>
   );
