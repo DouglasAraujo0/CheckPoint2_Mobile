@@ -10,7 +10,7 @@ const HomeScreen = ({ navigation }) => {
     { id: '3', name: 'Nike Air Max 97', price: '$134', image: require('../../assets/airmax.png')},
     { id: '4', name: 'Nike Dunk Low Retro SE', price: '$244', image: require('../../assets/retro.png')},
     { id: '5', name: 'Nike Journey Run', price: '$122', image: require('../../assets/run.png')},
-    { id: '6', name: 'Nike Air Max 90', price: '$200', image: require('../../assets/90.png')},
+    { id: '6', name: 'Nike Air Max 90', price: '$200', image: require('../../assets/noventa.png')},
   ];
 
   const renderItem = ({ item }) => (
