@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/telas/Home';
 import Detalhes from './src/telas/Detalhes';
 import Carrinho from './src/telas/Carrinho';
-import Login from './src/telas/Login';
+import SobreNos from './src/telas/SobreNos';
 import Descricao from './src/telas/Descricao';
 import {CarrinhoProvider} from './src/context/CarrinhoContext';
 
@@ -19,7 +19,7 @@ export default function App() {
             <Stack.Screen name='Home' component={Home} />
             <Stack.Screen name='Detalhes' component={Detalhes}/>
             <Stack.Screen name='Carrinho' component={Carrinho} />
-            <Stack.Screen name='Login' component={Login}/>
+            <Stack.Screen name='SobreNos' component={SobreNos}/>
             <Stack.Screen name='Descricao' component={Descricao}/>  
           </Stack.Navigator>
         </CarrinhoProvider>

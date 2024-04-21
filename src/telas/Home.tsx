@@ -1,9 +1,9 @@
-// HomeScreen.js
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native'; 
 import CarrinhoContext from '../context/CarrinhoContext';
+
 const HomeScreen = ({ navigation }) => {
-  const {adicionarAoCarrinho} = useContext(CarrinhoContext);
+  const { quantidadeItens } = useContext(CarrinhoContext);
   const Estoque = [
     { id: '1', name: 'Nike Air Force Preto', price: '$100', image: require('../../assets/forcepreto.png') },
     { id: '2', name: 'Nike Vomero 17', price: '$150', image: require('../../assets/vomero.png')},
@@ -28,11 +28,26 @@ const HomeScreen = ({ navigation }) => {
     navigation.navigate('Carrinho');
   };
 
+  const goToSobreNos = () => {
+    navigation.navigate('SobreNos');
+  };
+
+  const goToDescricao = () => {
+    navigation.navigate('Descricao');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Catálogo de Tênis</Text>
+      <Text style={styles.carrinhoText}>Itens no Carrinho: {quantidadeItens.toString()}</Text>  
       <TouchableOpacity style={styles.button} onPress={goToCarrinho}>
         <Text style={styles.buttonText}>Ir para o Carrinho</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={goToSobreNos}>
+        <Text style={styles.buttonText}>Sobre Nós</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={goToDescricao}>
+        <Text style={styles.buttonText}>Descrição</Text>
       </TouchableOpacity>
       <FlatList
         data={Estoque}
@@ -55,6 +70,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+  },
+  carrinhoText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: '#888',
   },
   listContainer: {
     flexGrow: 1,

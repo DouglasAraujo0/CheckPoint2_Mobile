@@ -3,14 +3,12 @@ import { View, Text, StyleSheet, Image, Button } from 'react-native';
 import CarrinhoContext from '../context/CarrinhoContext';
 
 const Detalhes = ({ route, navigation }) => {
-  const { adicionarAoCarrinho, carrinho } = useContext(CarrinhoContext);
+  const { adicionarAoCarrinho } = useContext(CarrinhoContext);
   const { tenis } = route.params;
 
   const addCarrinho = () => {
     adicionarAoCarrinho(tenis);
-    console.log("Item adicionado ao carrinho:", tenis);
-    console.log("Carrinho atual:", carrinho);
-    navigation.navigate('Carrinho'); // Navegue para o carrinho após adicionar o item
+    navigation.navigate('Carrinho');
   }
 
   return (
@@ -19,9 +17,6 @@ const Detalhes = ({ route, navigation }) => {
       <View style={styles.detailsContainer}>
         <Text style={styles.name}>{tenis.name}</Text>
         <Text style={styles.price}>{tenis.price}</Text>
-        <Text style={styles.description}>
-          Descrição do produto...
-        </Text>
         <Button title="Adicionar ao Carrinho" onPress={addCarrinho} />
       </View>
     </View>

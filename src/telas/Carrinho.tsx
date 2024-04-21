@@ -1,18 +1,41 @@
-// Carrinho.js
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, Button } from 'react-native';
 import CarrinhoContext from '../context/CarrinhoContext';
 
-const Carrinho = ({ route }) => {
-  const {adicionarAoCarrinho} = useContext(CarrinhoContext);
-  const { carrinho } = route.params || { carrinho: [] };
+const Carrinho = ({ navigation }) => {
+  const { carrinho, adicionarAoCarrinho, setQuantidadeItens } = useContext(CarrinhoContext);
+  const [carrinhoComChavesUnicas, setCarrinhoComChavesUnicas] = useState([]);
+
+  useEffect(() => {
+    const carrinhoAtualizado = carrinho.map((item, index) => ({
+      ...item,
+      id: item.id + '_' + index,
+    }));
+    setCarrinhoComChavesUnicas(carrinhoAtualizado);
+  }, [carrinho]);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Button
+          onPress={() => {
+            adicionarAoCarrinho([]);
+            setQuantidadeItens(0); 
+            navigation.goBack();
+          }}
+          title={`Limpar (${carrinho.length})`} 
+          color="#fff"
+        />
+      ),
+    });
+  }, [navigation, adicionarAoCarrinho, setQuantidadeItens, carrinho.length]);
 
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
       <Image source={item.image} style={styles.itemImage} />
       <View style={styles.itemDetails}>
-        <Text style={styles.itemName}>{item.name}</Text>
-        <Text style={styles.itemPrice}>{item.price}</Text>
+        <Text>{item.name}</Text>
+        <Text>{item.price}</Text>
       </View>
     </View>
   );
@@ -21,12 +44,26 @@ const Carrinho = ({ route }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Carrinho de Compras</Text>
       <FlatList
-        data={carrinho}
+        data={carrinhoComChavesUnicas}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.listContainer}
       />
-      <Button title="Finalizar Compra" onPress={() => alert('Compra Finalizada!')} />
+      <Button
+        title="Finalizar Compra"
+        onPress={() => {
+          adicionarAoCarrinho([]);
+          setQuantidadeItens(0); 
+          alert('Compra finalizada com sucesso!');
+        }}
+      />
+      <Button
+        title="Esvaziar Carrinho"
+        onPress={() => {
+          adicionarAoCarrinho([]);
+          setQuantidadeItens(0); 
+        }}
+      />
     </View>
   );
 };
@@ -40,7 +77,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   listContainer: {
     flexGrow: 1,
@@ -55,18 +92,10 @@ const styles = StyleSheet.create({
     height: 100,
     resizeMode: 'cover',
     borderRadius: 8,
+    marginRight: 10,
   },
   itemDetails: {
     flex: 1,
-    marginLeft: 10,
-  },
-  itemName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  itemPrice: {
-    fontSize: 16,
-    color: '#888',
   },
 });
 
