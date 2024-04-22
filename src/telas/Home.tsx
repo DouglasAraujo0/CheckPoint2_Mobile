@@ -5,11 +5,11 @@ import CarrinhoContext from '../context/CarrinhoContext';
 const HomeScreen = ({ navigation }) => {
   const { quantidadeItens } = useContext(CarrinhoContext);
   const Estoque = [
-    { id: '1', name: 'Nike Air Force Preto', price: '$100', image: require('../../assets/forcepreto.png') },
+    { id: '1', name: 'Nike Vomero 16', price: '$100', image: require('../../assets/vomero.png') },
     { id: '2', name: 'Nike Vomero 17', price: '$150', image: require('../../assets/vomero.png')},
     { id: '3', name: 'Nike Air Max 97', price: '$134', image: require('../../assets/airmax.png')},
-    { id: '4', name: 'Nike Dunk Low Retro SE', price: '$244', image: require('../../assets/retro.png')},
-    { id: '5', name: 'Nike Journey Run', price: '$122', image: require('../../assets/run.png')},
+    { id: '4', name: 'Nike Vomero 18', price: '$244', image: require('../../assets/vomero.png')},
+    { id: '5', name: 'Nike Vomero 20', price: '$122', image: require('../../assets/vomero.png')},
     { id: '6', name: 'Nike Air Max 90', price: '$200', image: require('../../assets/noventa.png')},
   ];
 
