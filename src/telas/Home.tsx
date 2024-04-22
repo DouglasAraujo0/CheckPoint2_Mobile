@@ -5,12 +5,12 @@ import CarrinhoContext from '../context/CarrinhoContext';
 const HomeScreen = ({ navigation }) => {
   const { quantidadeItens } = useContext(CarrinhoContext);
   const Estoque = [
-    { id: '1', name: 'Nike Vomero 16', price: '$100', image: require('../../assets/vomero.png') },
-    { id: '2', name: 'Nike Vomero 17', price: '$150', image: require('../../assets/vomero.png')},
-    { id: '3', name: 'Nike Air Max 97', price: '$134', image: require('../../assets/airmax.png')},
-    { id: '4', name: 'Nike Vomero 18', price: '$244', image: require('../../assets/vomero.png')},
-    { id: '5', name: 'Nike Vomero 20', price: '$122', image: require('../../assets/vomero.png')},
-    { id: '6', name: 'Nike Air Max 90', price: '$200', image: require('../../assets/noventa.png')},
+    { id: '1', name: 'Nike Vomero 16', price: '$100', image: require('../../assets/sneakers.png') },
+    { id: '2', name: 'Nike Vomero 17', price: '$150', image: require('../../assets/sneakers (1).png')},
+    { id: '3', name: 'Nike Air Max 97', price: '$134', image: require('../../assets/sneakers (2).png')},
+    { id: '4', name: 'Nike Vomero 18', price: '$244', image: require('../../assets/sneakers (3).png')},
+    { id: '5', name: 'Nike Vomero 20', price: '$122', image: require('../../assets/sneakers (4).png')},
+    { id: '6', name: 'Nike Air Max 90', price: '$200', image: require('../../assets/sport.png')},
   ];
 
   const renderItem = ({ item }) => (
